@@ -68,23 +68,25 @@ export default function ProductosList() {
 
       {/* Modal de edición */}
       <Modal
-        isOpen={!!editing}
-        title="Editar producto"
-        onClose={() => setEditing(null)}
-      >
-        {editing && (
-          <ProductForm
-            initialValues={{
-              title: editing.title ?? '',
-              price: editing.price ?? '',
-              description: editing.description ?? '',
-            }}
-            onSubmit={handleEditSubmit}
-            submitLabel="Guardar cambios"
-            onCancel={() => setEditing(null)}
-          />
-        )}
-      </Modal>
+  isOpen={!!editing}
+  title="Editar producto"
+  onClose={() => setEditing(null)}
+>
+  {editing && (
+    <ProductForm
+      initialValues={{
+        title: editing.title ?? '',
+        price: editing.price ?? '',
+        description: editing.description ?? '',
+        category: editing.category ?? '',
+        image: editing.image ?? '',
+      }}
+      onSubmit={handleEditSubmit}
+      submitLabel="Guardar cambios"
+      onCancel={() => setEditing(null)}
+    />
+  )}
+</Modal>
 
       {/* Modal de confirmación de borrado */}
       <Modal

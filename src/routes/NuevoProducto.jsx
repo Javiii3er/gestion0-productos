@@ -1,13 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import ProductForm from '../components/ProductForm.jsx';
-import { useProducts } from '../hooks/useProducts.jsx';
+import { useProducts } from '../hooks/useProducts.jsx'; 
 
 export default function NuevoProducto() {
   const { createProduct } = useProducts();
   const navigate = useNavigate();
 
   async function handleSubmit(values) {
-    // Optimistic UI: se añade y luego regresamos
     await createProduct(values);
     navigate('/');
   }
@@ -17,9 +16,15 @@ export default function NuevoProducto() {
       <div className="card-header">Nuevo producto</div>
       <div className="card-body">
         <ProductForm
-          initialValues={{ title: '', price: '', description: '', category: '', image: '' }}
+          initialValues={{ 
+            title: '', 
+            price: '', 
+            description: '', 
+            category: '', 
+            image: '' 
+          }}
           onSubmit={handleSubmit}
-          submitLabel="Crear"
+          submitLabel="Crear producto" 
           onCancel={() => navigate('/')}
         />
       </div>
